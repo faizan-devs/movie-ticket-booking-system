@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>BookMyTicket</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="main.css" />
+	</head>
+	<body>
+		<nav>
+			<div class="logo" onclick="goHome()">BOOK<span>MY</span>TICKET</div>
+			<div class="nav-right">
+				<span id="user-info"></span>
+				<button
+					class="btn ghost"
+					id="my-bookings-btn"
+					style="display: none"
+					onclick="showPage('my-bookings')"
+				>
+					My Bookings
+				</button>
+				<button
+					class="btn ghost"
+					id="logout-btn"
+					style="display: none"
+					onclick="logout()"
+				>
+					Logout
+				</button>
+				<button class="btn" id="login-nav-btn" onclick="showPage('auth')">
+					Login
+				</button>
+			</div>
+		</nav>
+
+		<div id="toast"></div>
+
+		<!-- LOGIN -->
+		<div id="auth-page" class="auth-page-wrap active">
+			<div class="auth-box">
+				<div class="auth-title">WELCOME<br /><span>BACK</span></div>
+				<div class="auth-sub">Sign in to your account</div>
+				<div id="login-error" class="error-msg"></div>
+				<div class="field">
+					<label>Email</label
+					><input type="email" id="login-email" placeholder="you@example.com" />
+				</div>
+				<div class="field">
+					<label>Password</label
+					><input type="password" id="login-password" placeholder="••••••••" />
+				</div>
+				<button class="btn auth-btn" onclick="doLogin()">LOGIN</button>
+				<div class="auth-switch">
+					Don't have an account? <a onclick="showPage('register')">Register</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- REGISTER -->
+		<div id="register-page" class="auth-page-wrap">
+			<div class="auth-box">
+				<div class="auth-title">CREATE<br /><span>ACCOUNT</span></div>
+				<div class="auth-sub">Join to start booking seats</div>
+				<div id="reg-error" class="error-msg"></div>
+				<div class="field">
+					<label>Name</label
+					><input type="text" id="reg-name" placeholder="Alice" />
+				</div>
+				<div class="field">
+					<label>Email</label
+					><input type="email" id="reg-email" placeholder="you@example.com" />
+				</div>
+				<div class="field">
+					<label>Password</label
+					><input
+						type="password"
+						id="reg-password"
+						placeholder="min 6 characters"
+					/>
+				</div>
+				<button class="btn auth-btn" onclick="doRegister()">
+					CREATE ACCOUNT
+				</button>
+				<div class="auth-switch">
+					Already have an account? <a onclick="showPage('auth')">Login</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- MOVIES -->
+		<div id="movies-page" class="page">
+			<div class="page-header">
+				<div class="page-title">NOW<br />SHOWING</div>
+				<div class="page-count" id="movie-count"></div>
+			</div>
+			<div class="movies-grid" id="movies-grid">
+				<div class="spinner"></div>
+			</div>
+		</div>
+
+		<!-- BOOKING -->
+		<div id="booking-page" class="page">
+			<button class="back-btn" onclick="showPage('movies')">
+				← Back to movies
+			</button>
+			<div class="booking-layout">
+				<div>
+					<div class="screen-label">Screen</div>
+					<div class="screen-bar"></div>
+					<div class="seats-grid" id="seats-grid"></div>
+					<div class="legend">
+						<div class="legend-item">
+							<div class="legend-dot available"></div>
+							Available
+						</div>
+						<div class="legend-item">
+							<div class="legend-dot selected"></div>
+							Selected
+						</div>
+						<div class="legend-item">
+							<div class="legend-dot booked"></div>
+							Booked
+						</div>
+					</div>
+				</div>
+				<div class="summary-box">
+					<div class="summary-title">BOOKING SUMMARY</div>
+					<div class="summary-movie" id="sum-movie">—</div>
+					<br />
+					<div class="summary-row">
+						<span class="label">DURATION</span
+						><span class="value" id="sum-duration">—</span>
+					</div>
+					<div class="summary-row">
+						<span class="label">LANGUAGE</span
+						><span class="value" id="sum-lang">—</span>
+					</div>
+					<div class="summary-row">
+						<span class="label">RATING</span
+						><span class="value" id="sum-rating">—</span>
+					</div>
+					<div class="summary-row">
+						<span class="label">SEAT</span
+						><span class="value accent" id="sum-seat">—</span>
+					</div>
+					<button
+						class="btn confirm-btn"
+						id="confirm-btn"
+						onclick="confirmBooking()"
+					>
+						CONFIRM BOOKING
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- MY BOOKINGS -->
+		<div id="my-bookings-page" class="page">
+			<div class="page-header">
+				<div class="page-title">MY<br />BOOKINGS</div>
+				<button
+					class="btn ghost"
+					onclick="showPage('movies')"
+					style="margin-left: auto; align-self: center"
+				>
+					Browse Movies
+				</button>
+			</div>
+			<div id="bookings-container"></div>
+		</div>
+
+		<script src="./script.js"></script>
+	</body>
+</html>
