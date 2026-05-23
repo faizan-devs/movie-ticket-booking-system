@@ -16,7 +16,11 @@ const port = process.env.PORT || 8080;
 
 const app = express();
 
-app.use(cors());
+app.use(
+	cors({
+		origin: 'https://movie-ticket-booking-system-ochre.vercel.app/',
+	}),
+);
 app.use(express.json());
 
 app.use('/auth', authRouter);
