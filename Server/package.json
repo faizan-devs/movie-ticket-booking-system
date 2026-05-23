@@ -12,6 +12,9 @@
     "db:up": "docker compose up -d",
     "db:down": "docker compose down"
   },
+  "engines": {
+    "node": ">=20"
+  },
   "dependencies": {
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
