@@ -1,25 +1,3 @@
-/**
- * Book My Ticket – Main server entry point
- *
- * Original endpoints (preserved as-is):
- *   GET  /          → serves index.html
- *   GET  /seats     → all seats
- *   PUT  /:id/:name → book a seat by id and name (legacy, unauthenticated)
- *
- * New endpoints added:
- *   POST /auth/register    → create an account
- *   POST /auth/login       → get a JWT
- *   GET  /auth/me          → profile (protected)
- *
- *   GET  /movies           → list all movies (public)
- *   GET  /movies/:movieId  → single movie details (public)
- *   GET  /movies/:movieId/seats → seats for a movie (protected)
- *
- *   POST   /bookings       → book a seat for a movie (protected)
- *   GET    /bookings/my    → my bookings (protected)
- *   DELETE /bookings/:id   → cancel a booking (protected)
- */
-
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
