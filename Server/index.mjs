@@ -18,7 +18,7 @@ const app = express();
 
 app.use(
 	cors({
-		origin: 'https://movie-ticket-booking-system-ochre.vercel.app/',
+		origin: 'https://movie-ticket-booking-system-ochre.vercel.app',
 	}),
 );
 app.use(express.json());
