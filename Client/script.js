@@ -1,10 +1,9 @@
-const API = 'http://localhost:8080';
+const API = 'https://movie-ticket-booking-system-r16t.onrender.com';
 let token = localStorage.getItem('bmt_token');
 let user = JSON.parse(localStorage.getItem('bmt_user') || 'null');
 let selectedSeat = null;
 let currentMovie = null;
 
-// Pages that use auth-page-wrap layout vs regular page layout
 const AUTH_PAGES = ['auth', 'register'];
 
 window.onload = () => {
@@ -20,23 +19,19 @@ function goHome() {
 }
 
 function showPage(name) {
-	// Hide all pages
 	document
 		.querySelectorAll('.page, .auth-page-wrap')
 		.forEach((p) => p.classList.remove('active'));
 	const el = document.getElementById(name + '-page');
 	if (el) el.classList.add('active');
-	// Clear errors when switching auth pages
 	if (name === 'auth') {
 		clearError('login-error');
 	}
 	if (name === 'register') {
 		clearError('reg-error');
 	}
-	// Load data
 	if (name === 'movies') loadMovies();
 	if (name === 'my-bookings') loadMyBookings();
-	// Scroll to top
 	window.scrollTo(0, 0);
 }
 
